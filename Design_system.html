@@ -1,0 +1,396 @@
+<!-- 
+  PAGE: ABD_DESIGN_SYSTEM_V2
+  STATUS: GOLD MASTER
+  SCOPE: Foundations, Components, Patterns, Interactions
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABD | Design System v2.0</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons: Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Typography -->
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'void': '#050505', 
+                        'card': '#0F0F0F', 
+                        'border': '#1F1F1F', 
+                        'acid': '#CCFF00', 
+                        'acid-dim': 'rgba(204, 255, 0, 0.1)',
+                        'sub': '#888888',
+                        'error': '#FF3333',
+                        'success': '#00FF99'
+                    },
+                    fontFamily: {
+                        'head': ['Clash Display', 'sans-serif'],
+                        'body': ['General Sans', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'loud': ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-system': `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Grid Background */
+        .bg-fixed-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
+
+        /* Form Components */
+        .abd-input:focus {
+            outline: none;
+            border-color: #CCFF00;
+            box-shadow: 0 0 0 1px rgba(204, 255, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body">
+
+    <div class="bg-fixed-grid"></div>
+
+    <!-- Header -->
+    <header class="py-12 px-6 lg:px-12 border-b border-white/10 flex justify-between items-end bg-void/90 sticky top-0 z-50 backdrop-blur-md">
+        <div>
+            <h1 class="font-head text-4xl lg:text-6xl text-white mb-1 uppercase tracking-tight">System<span class="text-acid">.v2</span></h1>
+            <p class="text-sub font-mono text-xs uppercase tracking-widest">ABD Master Component Library</p>
+        </div>
+        <div class="hidden md:flex gap-4">
+            <a href="#typography" class="text-[10px] uppercase font-bold text-sub hover:text-acid">Typography</a>
+            <a href="#colors" class="text-[10px] uppercase font-bold text-sub hover:text-acid">Color</a>
+            <a href="#inputs" class="text-[10px] uppercase font-bold text-sub hover:text-acid">Forms</a>
+            <a href="#cards" class="text-[10px] uppercase font-bold text-sub hover:text-acid">Cards</a>
+            <a href="#feedback" class="text-[10px] uppercase font-bold text-sub hover:text-acid">Feedback</a>
+        </div>
+    </header>
+
+    <main class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 p-6 lg:p-12">
+
+        <!-- 01. FOUNDATIONS (Color & Type) -->
+        <section id="foundations" class="col-span-12 lg:col-span-12 space-y-12">
+            
+            <div class="border-b border-white/10 pb-4 mb-8">
+                <h2 class="font-mono text-acid text-xs">/// 01. FOUNDATIONS</h2>
+            </div>
+
+            <!-- Colors -->
+            <div id="colors" class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-acid rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Acid Lime</span><span class="text-sub">#CCFF00</span></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-void rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Void</span><span class="text-sub">#050505</span></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-card rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Card</span><span class="text-sub">#0F0F0F</span></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-border rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Border</span><span class="text-sub">#1F1F1F</span></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-error rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Error</span><span class="text-sub">#FF3333</span></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="h-24 w-full bg-success rounded-sm border border-white/10"></div>
+                    <div class="flex justify-between text-[10px] font-mono"><span class="text-white">Success</span><span class="text-sub">#0099FF</span></div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div id="typography" class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-white/10">
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Display (Clash Display)</span>
+                    <h1 class="font-head text-6xl text-white mb-2">Display XL</h1>
+                    <h2 class="font-head text-4xl text-white mb-2">Display L</h2>
+                    <h3 class="font-head text-2xl text-white mb-2">Display M</h3>
+                </div>
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Body & UI (General Sans + Mono)</span>
+                    <p class="font-body text-base text-white mb-4 leading-relaxed">
+                        Body Large: The definitive digital rolodex for businesses, creatives, and services from the Motherland.
+                    </p>
+                    <p class="font-body text-sm text-sub mb-4">
+                        Body Small: Used for secondary descriptions and metadata.
+                    </p>
+                    <p class="font-mono text-xs text-acid">
+                        Mono Text: Used for tags, timestamps, and technical data.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. INTERACTIVE ELEMENTS -->
+        <section id="inputs" class="col-span-12 lg:col-span-6 space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="font-mono text-acid text-xs">/// 02. INPUTS & FORMS</h2>
+            </div>
+
+            <!-- Basic Inputs -->
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-sub mb-2">Standard Input</label>
+                    <input type="text" placeholder="Enter text here..." class="abd-input w-full bg-void border border-white/10 h-12 px-4 text-sm text-white placeholder:text-sub/50">
+                </div>
+                
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-sub mb-2">Input with Icon</label>
+                    <div class="relative group">
+                        <i class="ph ph-envelope absolute left-4 top-1/2 -translate-y-1/2 text-sub group-focus-within:text-acid transition-colors"></i>
+                        <input type="email" placeholder="email@address.com" class="abd-input w-full bg-void border border-white/10 h-12 pl-10 pr-4 text-sm text-white placeholder:text-sub/50">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-sub mb-2">Select Dropdown</label>
+                    <div class="relative">
+                        <select class="abd-input w-full bg-void border border-white/10 h-12 px-4 text-sm text-white appearance-none cursor-pointer">
+                            <option>Option One</option>
+                            <option>Option Two</option>
+                        </select>
+                        <i class="ph ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-sub pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- File Upload (New) -->
+                <div>
+                    <label class="block text-[10px] font-bold uppercase text-sub mb-2">Image Upload</label>
+                    <div class="border-2 border-dashed border-white/10 bg-white/5 rounded-sm p-8 text-center hover:border-acid hover:bg-white/10 transition-all cursor-pointer">
+                        <i class="ph ph-upload-simple text-2xl text-sub mb-2"></i>
+                        <p class="text-xs text-white">Drag & drop or <span class="text-acid underline">browse</span></p>
+                        <span class="text-[10px] text-sub">JPG, PNG up to 5MB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. BUTTONS & NAVIGATION -->
+        <section id="navigation" class="col-span-12 lg:col-span-6 space-y-8">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="font-mono text-acid text-xs">/// 03. BUTTONS & NAV</h2>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap gap-4">
+                <button class="bg-acid text-void h-12 px-8 font-bold uppercase text-xs tracking-widest hover:bg-white transition-colors">Primary</button>
+                <button class="border border-white/20 text-white h-12 px-8 font-bold uppercase text-xs tracking-widest hover:border-acid hover:text-acid transition-colors">Secondary</button>
+                <button class="bg-white/10 text-white h-12 px-8 font-bold uppercase text-xs tracking-widest hover:bg-white/20 transition-colors">Ghost</button>
+                <button class="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:bg-acid hover:text-void hover:border-acid transition-colors"><i class="ph-bold ph-plus"></i></button>
+            </div>
+
+            <!-- Tabs -->
+            <div>
+                <span class="text-[10px] text-sub uppercase font-mono block mb-4">Tab Navigation</span>
+                <div class="flex border-b border-white/10">
+                    <button class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-acid border-b-2 border-acid">All</button>
+                    <button class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-sub hover:text-white transition-colors">Unread</button>
+                    <button class="px-6 py-3 text-xs font-bold uppercase tracking-wider text-sub hover:text-white transition-colors">Archived</button>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div>
+                <span class="text-[10px] text-sub uppercase font-mono block mb-4">Pagination</span>
+                <div class="flex items-center gap-2">
+                    <button class="w-8 h-8 flex items-center justify-center border border-white/10 text-sub hover:text-white"><i class="ph ph-caret-left"></i></button>
+                    <button class="w-8 h-8 flex items-center justify-center bg-acid text-void font-bold text-xs">1</button>
+                    <button class="w-8 h-8 flex items-center justify-center border border-white/10 text-sub hover:text-white text-xs hover:border-white">2</button>
+                    <button class="w-8 h-8 flex items-center justify-center border border-white/10 text-sub hover:text-white text-xs hover:border-white">3</button>
+                    <span class="text-sub">...</span>
+                    <button class="w-8 h-8 flex items-center justify-center border border-white/10 text-sub hover:text-white"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Breadcrumbs -->
+            <div>
+                <span class="text-[10px] text-sub uppercase font-mono block mb-4">Breadcrumbs</span>
+                <div class="flex items-center gap-2 text-xs font-mono">
+                    <a href="#" class="text-sub hover:text-white">Directory</a>
+                    <span class="text-white/20">/</span>
+                    <a href="#" class="text-sub hover:text-white">Restaurants</a>
+                    <span class="text-white/20">/</span>
+                    <span class="text-acid">Houston</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. CARDS & MODULES -->
+        <section id="cards" class="col-span-12 space-y-8 pt-8 border-t border-white/10">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="font-mono text-acid text-xs">/// 04. COMPONENT CARDS</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Listing Card (Directory) -->
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Listing Card</span>
+                    <article class="bg-void border border-white/10 p-6 hover:border-acid transition-colors group cursor-pointer relative">
+                        <div class="absolute top-4 right-4 bg-acid text-void text-[9px] font-bold px-2 py-0.5">OPEN</div>
+                        <span class="text-[10px] font-bold text-sub uppercase mb-2 block">Dining</span>
+                        <h4 class="font-head text-xl font-bold text-white mb-2 group-hover:text-acid transition-colors">Lagos Suya Spot</h4>
+                        <p class="text-xs text-sub mb-4 line-clamp-2">Authentic Nigerian grill & spice.</p>
+                        <div class="pt-4 border-t border-white/10 flex justify-between items-center">
+                            <span class="text-[10px] text-white flex items-center gap-1"><i class="ph-fill ph-map-pin"></i> Houston, TX</span>
+                            <div class="flex gap-2">
+                                <button class="text-sub hover:text-white"><i class="ph ph-heart text-lg"></i></button>
+                                <button class="text-sub hover:text-white"><i class="ph ph-share-network text-lg"></i></button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Article Card (Lifestyle) -->
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Article Card</span>
+                    <article class="group cursor-pointer">
+                        <div class="h-40 bg-white/5 border border-white/10 overflow-hidden mb-4 relative">
+                            <div class="absolute inset-0 bg-void/20 group-hover:bg-transparent transition-colors"></div>
+                            <img src="https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-mono text-acid mb-1 block">Fashion</span>
+                        <h4 class="font-head text-lg font-bold text-white mb-1 group-hover:underline">The Future of African Tech</h4>
+                        <p class="text-xs text-sub">Exploring the new wave of streetwear.</p>
+                    </article>
+                </div>
+
+                <!-- Comment Component (Community) -->
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Comment Thread</span>
+                    <div class="border border-white/10 bg-white/5 p-4 rounded-sm">
+                        <div class="flex gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-acid text-void flex items-center justify-center font-bold text-xs">JD</div>
+                            <div>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-sm font-bold text-white">John Doe</span>
+                                    <span class="text-[10px] text-sub">2h ago</span>
+                                </div>
+                                <p class="text-xs text-white/80 mt-1">This is exactly what the city needed. Can't wait to visit!</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 pl-11 text-[10px] font-bold uppercase text-sub">
+                            <button class="hover:text-acid flex items-center gap-1"><i class="ph-bold ph-arrow-up"></i> 24</button>
+                            <button class="hover:text-white">Reply</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 05. DATA & FEEDBACK -->
+        <section id="feedback" class="col-span-12 space-y-8 pt-8 border-t border-white/10">
+            <div class="border-b border-white/10 pb-4">
+                <h2 class="font-mono text-acid text-xs">/// 05. FEEDBACK & DATA</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Notifications/Toasts -->
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">System Alerts</span>
+                    <div class="space-y-4">
+                        <!-- Success -->
+                        <div class="flex items-center gap-3 p-4 bg-void border border-success/30 rounded-sm">
+                            <i class="ph-fill ph-check-circle text-success text-lg"></i>
+                            <div>
+                                <h5 class="text-xs font-bold text-white">Listing Created</h5>
+                                <p class="text-[10px] text-sub">Your business is now pending review.</p>
+                            </div>
+                        </div>
+                        <!-- Error -->
+                        <div class="flex items-center gap-3 p-4 bg-void border border-error/30 rounded-sm">
+                            <i class="ph-fill ph-warning-circle text-error text-lg"></i>
+                            <div>
+                                <h5 class="text-xs font-bold text-white">Upload Failed</h5>
+                                <p class="text-[10px] text-sub">File size exceeds 5MB limit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div>
+                    <span class="text-sub text-[10px] uppercase font-mono block mb-4">Data Table</span>
+                    <div class="border border-white/10 bg-void rounded-sm overflow-hidden">
+                        <table class="w-full text-left">
+                            <thead class="bg-white/5 text-[10px] uppercase font-bold text-sub border-b border-white/10">
+                                <tr>
+                                    <th class="p-3">User</th>
+                                    <th class="p-3">Status</th>
+                                    <th class="p-3">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs text-white">
+                                <tr class="border-b border-white/10 hover:bg-white/5">
+                                    <td class="p-3 font-bold">@chioma_n</td>
+                                    <td class="p-3"><span class="bg-success/10 text-success px-2 py-0.5 rounded-full text-[10px] font-bold">Active</span></td>
+                                    <td class="p-3 text-sub font-mono">Oct 24</td>
+                                </tr>
+                                <tr class="hover:bg-white/5">
+                                    <td class="p-3 font-bold">@kwame_dev</td>
+                                    <td class="p-3"><span class="bg-white/10 text-sub px-2 py-0.5 rounded-full text-[10px] font-bold">Offline</span></td>
+                                    <td class="p-3 text-sub font-mono">Oct 22</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
